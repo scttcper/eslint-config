@@ -2,6 +2,9 @@
   "name": "@ctrl/eslint-config",
   "version": "1.0.0",
   "description": "shareable typescript config",
+  "publishConfig": {
+    "access": "public"
+  },
   "files": [
     "index.js"
   ],
@@ -16,10 +19,13 @@
     "typescript": "3.9.5"
   },
   "repository": "typectrl/eslint-config",
-  "author": "scttcper",
+  "author": "Scott Cooper <scttcper@gmail.com>",
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/TypeCtrl/eslint-config/issues"
+  },
+  "release": {
+    "branch": "master"
   },
   "homepage": "https://github.com/TypeCtrl/eslint-config#readme"
 }

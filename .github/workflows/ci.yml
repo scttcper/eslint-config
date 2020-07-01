@@ -11,6 +11,7 @@ jobs:
         with:
           node-version: 14
       - run: npm install
+
   publish:
     needs: build
     runs-on: ubuntu-latest
