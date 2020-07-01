@@ -1,0 +1,25 @@
+{
+  "name": "@ctrl/eslint-config",
+  "version": "1.0.0",
+  "description": "shareable typescript config",
+  "files": [
+    "index.js"
+  ],
+  "dependencies": {
+    "eslint-config-xo": "^0.32.0",
+    "eslint-config-xo-typescript": "^0.31.0"
+  },
+  "devDependencies": {
+    "@typescript-eslint/eslint-plugin": "3.5.0",
+    "@typescript-eslint/parser": "3.5.0",
+    "eslint": "7.3.1",
+    "typescript": "3.9.5"
+  },
+  "repository": "typectrl/eslint-config",
+  "author": "scttcper",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/TypeCtrl/eslint-config/issues"
+  },
+  "homepage": "https://github.com/TypeCtrl/eslint-config#readme"
+}
