@@ -19,7 +19,6 @@ build/Release
 
 # Dependency directories
 node_modules
-jspm_packages
 
 # Optional npm cache directory
 .npm
@@ -28,9 +27,3 @@ jspm_packages
 .node_repl_history
 .vscode/*
 !.vscode/launch.json
-
-# build
-build
-docs
-dist
-.rpt2_cache
