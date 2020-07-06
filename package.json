@@ -5,9 +5,7 @@
   "publishConfig": {
     "access": "public"
   },
-  "scripts": {
-    "semantic-release": "semantic-release"
-  },
+  "scripts": {},
   "files": [
     "index.js"
   ],
@@ -18,9 +16,7 @@
     "eslint-config-xo": "^0.32.0",
     "eslint-config-xo-typescript": "^0.31.0"
   },
-  "devDependencies": {
-    "semantic-release": "17.1.1"
-  },
+  "devDependencies": {},
   "repository": "scttcper/eslint-config",
   "author": "Scott Cooper <scttcper@gmail.com>",
   "license": "MIT",
