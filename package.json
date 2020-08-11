@@ -10,11 +10,11 @@
     "index.js"
   ],
   "dependencies": {
-    "@typescript-eslint/eslint-plugin": "^3.8.0",
-    "@typescript-eslint/parser": "^3.8.0",
+    "@typescript-eslint/eslint-plugin": "^3.9.0",
+    "@typescript-eslint/parser": "^3.9.0",
     "eslint": "^7.6.0",
     "eslint-config-xo": "^0.32.1",
-    "eslint-config-xo-typescript": "^0.31.0"
+    "eslint-config-xo-typescript": "^0.32.0"
   },
   "devDependencies": {},
   "repository": "scttcper/eslint-config",
