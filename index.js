@@ -7,7 +7,7 @@ module.exports = {
   ],
   rules: {
     'object-curly-spacing': ['error', 'always'],
-    'comma-dangle': ['error', 'always-multiline'],
+    '@eslint-typescript/comma-dangle': ['error', 'always-multiline'],
     '@typescript-eslint/no-explicit-any': 'off',
     '@typescript-eslint/no-unsafe-member-access': 'off',
     '@typescript-eslint/no-unsafe-call': 'off',
