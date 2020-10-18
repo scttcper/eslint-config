@@ -6,6 +6,7 @@ module.exports = {
     'plugin:prettier/recommended',
   ],
   rules: {
+    'curly': 'error',
     'object-curly-spacing': ['error', 'always'],
     '@typescript-eslint/comma-dangle': ['error', 'always-multiline'],
     '@typescript-eslint/no-explicit-any': 'off',
