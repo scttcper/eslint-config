@@ -1,6 +1,6 @@
 module.exports = {
   extends: [
-    'xo',
+    'xo-space',
     'xo-typescript/space',
     'prettier/@typescript-eslint',
     'plugin:prettier/recommended',
