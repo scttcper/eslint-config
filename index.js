@@ -14,6 +14,7 @@ module.exports = {
     '@typescript-eslint/no-unsafe-call': 'off',
     '@typescript-eslint/no-unsafe-return': 'off',
     '@typescript-eslint/no-floating-promises': 'off',
+    '@typescript-eslint/no-implicit-any-catch': 'off',
     'capitalized-comments': 'off',
   },
 };
