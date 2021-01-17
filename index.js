@@ -16,5 +16,6 @@ module.exports = {
     '@typescript-eslint/no-floating-promises': 'off',
     '@typescript-eslint/no-implicit-any-catch': 'off',
     'capitalized-comments': 'off',
+    'eslint-disable-next-line react/jsx-tag-spacing': 'off',
   },
 };
