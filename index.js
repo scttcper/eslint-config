@@ -17,7 +17,7 @@ module.exports = {
     '@typescript-eslint/no-confusing-void-expression': 'off',
     'capitalized-comments': 'off',
 
-        // ensure imports point to files/modules that can be resolved
+      // ensure imports point to files/modules that can be resolved
     // https://github.com/benmosher/eslint-plugin-import/blob/master/docs/rules/no-unresolved.md
     'import/no-unresolved': ['error', {commonjs: true, caseSensitive: true}],
 
