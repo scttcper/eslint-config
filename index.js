@@ -1,8 +1,13 @@
 module.exports = {
   extends: [
-    'xo', 'xo-typescript/space', 'plugin:prettier/recommended'
+    'xo',
+    'xo-typescript/space',
+    'prettier',
+    'plugin:prettier/recommended',
+    'prettier/@typescript-eslint',
+    'plugin:import/typescript',
   ],
-  plugins: ['import'],
+  plugins: ['simple-import-sort', 'import'],
   rules: {
     curly: 'error',
     'object-curly-spacing': ['error', 'always'],
@@ -16,164 +21,45 @@ module.exports = {
     '@typescript-eslint/no-confusing-void-expression': 'off',
     'capitalized-comments': 'off',
 
-    // ensure imports point to files/modules that can be resolved
-    // https://github.com/benmosher/eslint-plugin-import/blob/master/docs/rules/no-unresolved.md
-    'import/no-unresolved': ['error', { commonjs: true, caseSensitive: true }],
-
-    // ensure named imports coupled with named exports
-    // https://github.com/benmosher/eslint-plugin-import/blob/master/docs/rules/named.md#when-not-to-use-it
-    'import/named': ['error'],
-
-    // ensure default import coupled with default export
-    // https://github.com/benmosher/eslint-plugin-import/blob/master/docs/rules/default.md#when-not-to-use-it
-    'import/default': ['error'],
-
-    // https://github.com/benmosher/eslint-plugin-import/blob/master/docs/rules/namespace.md
-    'import/namespace': ['off'],
-
-    // disallow invalid exports, e.g. multiple defaults
-    // https://github.com/benmosher/eslint-plugin-import/blob/master/docs/rules/export.md
-    'import/export': ['error'],
-
-    // Redflags
-    // do not allow a default import name to match a named export (airbnb: error)
-    // Issue with `DefaultIssuePlugin` and `app/plugins/index`
-    // https://github.com/benmosher/eslint-plugin-import/blob/master/docs/rules/no-named-as-default.md
-    'import/no-named-as-default': ['off'],
-
-    // warn on accessing default export property names that are also named exports (airbnb: error)
-    // This cannot be abled because of how `utils` is exported, as well as how it used in getsentry
-    // https://github.com/benmosher/eslint-plugin-import/blob/master/docs/rules/no-named-as-default-member.md
-    'import/no-named-as-default-member': ['off'],
-
-    // disallow use of jsdoc-marked-deprecated imports
-    // https://github.com/benmosher/eslint-plugin-import/blob/master/docs/rules/no-deprecated.md
-    'import/no-deprecated': ['off'],
-
-    // Forbid mutable exports (airbnb: error)
-    // https://github.com/benmosher/eslint-plugin-import/blob/master/docs/rules/no-mutable-exports.md
-    // TODO: enable?
-    'import/no-mutable-exports': ['off'],
-
-    // disallow require()
-    // https://github.com/benmosher/eslint-plugin-import/blob/master/docs/rules/no-commonjs.md
-    'import/no-commonjs': ['off'],
-
-    // disallow AMD require/define
-    // https://github.com/benmosher/eslint-plugin-import/blob/master/docs/rules/no-amd.md
-    'import/no-amd': ['error'],
-
-    // No Node.js builtin modules (airbnb: off)
-    // https://github.com/benmosher/eslint-plugin-import/blob/master/docs/rules/no-nodejs-modules.md
-    'import/no-nodejs-modules': ['error'],
-
-    // disallow duplicate imports
-    // https://github.com/benmosher/eslint-plugin-import/blob/master/docs/rules/no-duplicates.md
-    'import/no-duplicates': ['error'],
-
-    // disallow namespace imports
-    // https://github.com/benmosher/eslint-plugin-import/blob/master/docs/rules/no-namespace.md
-    'import/no-namespace': ['off'],
-
-    // Ensure consistent use of file extension within the import path
-    // https://github.com/benmosher/eslint-plugin-import/blob/master/docs/rules/extensions.md
-    // TODO this fucks up getsentry
-    'import/extensions': [
-      'off',
-      'always',
-      {
-        js: 'never',
-        jsx: 'never',
-      },
-    ],
-
-    // Enforce a convention in module import order
-    // https://github.com/benmosher/eslint-plugin-import/blob/master/docs/rules/order.md
-    'import/order': [
+    /**
+     * Better import sorting
+     */
+    'sort-imports': 'off',
+    'import/order': 'off',
+    'simple-import-sort/imports': [
       'error',
       {
         groups: [
-          'builtin',
-          'external',
-          'internal',
-          ['parent', 'sibling', 'index'],
+          // Side effect imports.
+          ['^\\u0000'],
+
+          // Node.js builtins. You could also generate this regex if you use a `.js` config.
+          // For example: `^(${require("module").builtinModules.join("|")})(/|$)`
+          [
+            '^(assert|buffer|child_process|cluster|console|constants|crypto|dgram|dns|domain|events|fs|http|https|module|net|os|path|punycode|querystring|readline|repl|stream|string_decoder|sys|timers|tls|tty|url|util|vm|zlib|freelist|v8|process|async_hooks|http2|perf_hooks)(/.*|$)',
+          ],
+
+          // Packages. `react` related packages come first.
+          ['^react', '^@?\\w'],
+
+          // Test should be separate from the app
+          ['^(sentry-test)(/.*|$)'],
+
+          // Internal packages.
+          ['^(app|sentry|sentry-locale)(/.*|$)'],
+
+          // Getsentry packages.
+          ['^(admin|getsentry)(/.*|$)'],
+
+          // Style imports.
+          ['^.+\\.less$'],
+
+          // Parent imports. Put `..` last.
+          ['^\\.\\.(?!/?$)', '^\\.\\./?$'],
+
+          // Other relative imports. Put same-folder imports and `.` last.
+          ['^\\./(?=.*/)(?!/?$)', '^\\.(?!/?$)', '^\\./?$'],
         ],
-        'newlines-between': 'always',
-      },
-    ],
-
-    // Require a newline after the last import/require in a group
-    // https://github.com/benmosher/eslint-plugin-import/blob/master/docs/rules/newline-after-import.md
-    'import/newline-after-import': ['error'],
-
-    // Require modules with a single export to use a default export (airbnb: error)
-    // https://github.com/benmosher/eslint-plugin-import/blob/master/docs/rules/prefer-default-export.md
-    'import/prefer-default-export': ['off'],
-
-    // Restrict which files can be imported in a given folder
-    // https://github.com/benmosher/eslint-plugin-import/blob/master/docs/rules/no-restricted-paths.md
-    'import/no-restricted-paths': ['off'],
-
-    // Forbid modules to have too many dependencies
-    // https://github.com/benmosher/eslint-plugin-import/blob/master/docs/rules/max-dependencies.md
-    'import/max-dependencies': ['off', { max: 10 }],
-
-    // Forbid import of modules using absolute paths
-    // https://github.com/benmosher/eslint-plugin-import/blob/master/docs/rules/no-absolute-path.md
-    'import/no-absolute-path': ['error'],
-
-    // Forbid require() calls with expressions (airbnb: error)
-    // https://github.com/benmosher/eslint-plugin-import/blob/master/docs/rules/no-dynamic-require.md
-    'import/no-dynamic-require': ['off'],
-
-    'import/dynamic-import-chunkname': [
-      2,
-      {
-        importFunctions: ['dynamicImport'],
-        webpackChunknameFormat: '[a-zA-Z0-57-9-/_]+',
-      },
-    ],
-
-    // prevent importing the submodules of other modules
-    // https://github.com/benmosher/eslint-plugin-import/blob/master/docs/rules/no-internal-modules.md
-    'import/no-internal-modules': [
-      'off',
-      {
-        allow: [],
-      },
-    ],
-
-    // Warn if a module could be mistakenly parsed as a script by a consumer
-    // leveraging Unambiguous JavaScript Grammar
-    // https://github.com/benmosher/eslint-plugin-import/blob/master/docs/rules/unambiguous.md
-    // this should not be enabled until this proposal has at least been *presented* to TC39.
-    // At the moment, it"s not a thing.
-    'import/unambiguous': ['off'],
-
-    // Forbid Webpack loader syntax in imports
-    // https://github.com/benmosher/eslint-plugin-import/blob/master/docs/rules/no-webpack-loader-syntax.md
-    'import/no-webpack-loader-syntax': ['error'],
-
-    // Prevent unassigned imports
-    // https://github.com/benmosher/eslint-plugin-import/blob/master/docs/rules/no-unassigned-import.md
-    // importing for side effects is perfectly acceptable, if you need side effects.
-    'import/no-unassigned-import': ['off'],
-
-    // Prevent importing the default as if it were named
-    // https://github.com/benmosher/eslint-plugin-import/blob/master/docs/rules/no-named-default.md
-    'import/no-named-default': ['error'],
-
-    // Reports if a module"s default export is unnamed
-    // https://github.com/benmosher/eslint-plugin-import/blob/d9b712ac7fd1fddc391f7b234827925c160d956f/docs/rules/no-anonymous-default-export.md
-    'import/no-anonymous-default-export': [
-      'error',
-      {
-        allowArray: true,
-        allowArrowFunction: false,
-        allowAnonymousClass: false,
-        allowAnonymousFunction: false,
-        allowLiteral: true,
-        allowObject: true,
       },
     ],
   },
