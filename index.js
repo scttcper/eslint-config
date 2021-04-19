@@ -4,7 +4,6 @@ module.exports = {
     'xo-typescript/space',
     'prettier',
     'plugin:prettier/recommended',
-    'prettier/@typescript-eslint',
     'plugin:import/typescript',
   ],
   plugins: ['simple-import-sort', 'import'],
