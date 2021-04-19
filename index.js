@@ -1,11 +1,10 @@
 module.exports = {
   extends: [
-    'xo',
-    'xo-typescript/space',
-    'plugin:prettier/recommended',
+    'xo', 'xo-typescript/space', 'plugin:prettier/recommended'
   ],
+  plugins: ['import'],
   rules: {
-    'curly': 'error',
+    curly: 'error',
     'object-curly-spacing': ['error', 'always'],
     '@typescript-eslint/comma-dangle': 'off',
     '@typescript-eslint/no-explicit-any': 'off',
@@ -17,9 +16,9 @@ module.exports = {
     '@typescript-eslint/no-confusing-void-expression': 'off',
     'capitalized-comments': 'off',
 
-      // ensure imports point to files/modules that can be resolved
+    // ensure imports point to files/modules that can be resolved
     // https://github.com/benmosher/eslint-plugin-import/blob/master/docs/rules/no-unresolved.md
-    'import/no-unresolved': ['error', {commonjs: true, caseSensitive: true}],
+    'import/no-unresolved': ['error', { commonjs: true, caseSensitive: true }],
 
     // ensure named imports coupled with named exports
     // https://github.com/benmosher/eslint-plugin-import/blob/master/docs/rules/named.md#when-not-to-use-it
@@ -93,7 +92,12 @@ module.exports = {
     'import/order': [
       'error',
       {
-        groups: ['builtin', 'external', 'internal', ['parent', 'sibling', 'index']],
+        groups: [
+          'builtin',
+          'external',
+          'internal',
+          ['parent', 'sibling', 'index'],
+        ],
         'newlines-between': 'always',
       },
     ],
@@ -112,7 +116,7 @@ module.exports = {
 
     // Forbid modules to have too many dependencies
     // https://github.com/benmosher/eslint-plugin-import/blob/master/docs/rules/max-dependencies.md
-    'import/max-dependencies': ['off', {max: 10}],
+    'import/max-dependencies': ['off', { max: 10 }],
 
     // Forbid import of modules using absolute paths
     // https://github.com/benmosher/eslint-plugin-import/blob/master/docs/rules/no-absolute-path.md
@@ -122,10 +126,13 @@ module.exports = {
     // https://github.com/benmosher/eslint-plugin-import/blob/master/docs/rules/no-dynamic-require.md
     'import/no-dynamic-require': ['off'],
 
-    "import/dynamic-import-chunkname": [2, {
-      importFunctions: ["dynamicImport"],
-      webpackChunknameFormat: "[a-zA-Z0-57-9-/_]+"
-    }],
+    'import/dynamic-import-chunkname': [
+      2,
+      {
+        importFunctions: ['dynamicImport'],
+        webpackChunknameFormat: '[a-zA-Z0-57-9-/_]+',
+      },
+    ],
 
     // prevent importing the submodules of other modules
     // https://github.com/benmosher/eslint-plugin-import/blob/master/docs/rules/no-internal-modules.md
