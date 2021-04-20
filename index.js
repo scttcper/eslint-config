@@ -4,9 +4,8 @@ module.exports = {
     'xo-typescript/space',
     'prettier',
     'plugin:prettier/recommended',
-    'plugin:import/typescript',
   ],
-  plugins: ['simple-import-sort', 'import'],
+  plugins: ['simple-import-sort'],
   rules: {
     curly: 'error',
     'object-curly-spacing': ['error', 'always'],
@@ -23,9 +22,7 @@ module.exports = {
     /**
      * Better import sorting
      */
-    'sort-imports': 'off',
-    'import/order': 'off',
-    'simple-import-sort/imports': [
+     'simple-import-sort/imports': [
       'error',
       {
         groups: [
@@ -41,17 +38,8 @@ module.exports = {
           // Packages. `react` related packages come first.
           ['^react', '^@?\\w'],
 
-          // Test should be separate from the app
-          ['^(sentry-test)(/.*|$)'],
-
           // Internal packages.
-          ['^(app|sentry|sentry-locale)(/.*|$)'],
-
-          // Getsentry packages.
-          ['^(admin|getsentry)(/.*|$)'],
-
-          // Style imports.
-          ['^.+\\.less$'],
+          ['^(@ctrl)(/.*|$)'],
 
           // Parent imports. Put `..` last.
           ['^\\.\\.(?!/?$)', '^\\.\\./?$'],
