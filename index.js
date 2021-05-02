@@ -17,12 +17,14 @@ module.exports = {
     '@typescript-eslint/no-floating-promises': 'off',
     '@typescript-eslint/no-implicit-any-catch': 'off',
     '@typescript-eslint/no-confusing-void-expression': 'off',
+    '@typescript-eslint/no-non-null-assertion': 'off',
+    '@typescript-eslint/no-unsafe-argument': 'off',
     'capitalized-comments': 'off',
 
     /**
      * Better import sorting
      */
-     'simple-import-sort/imports': [
+    'simple-import-sort/imports': [
       'error',
       {
         groups: [
