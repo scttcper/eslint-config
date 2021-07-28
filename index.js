@@ -32,6 +32,7 @@ module.exports = {
           // Side effect imports.
           ['^\\u0000'],
 
+          ['^node:.*$'],
           // Node.js builtins. You could also generate this regex if you use a `.js` config.
           // For example: `^(${require("module").builtinModules.join("|")})(/|$)`
           [
