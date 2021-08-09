@@ -10,12 +10,12 @@
     "index.js"
   ],
   "dependencies": {
-    "@typescript-eslint/eslint-plugin": "^4.28.5",
-    "@typescript-eslint/parser": "^4.28.5",
+    "@typescript-eslint/eslint-plugin": "^4.29.0",
+    "@typescript-eslint/parser": "^4.29.0",
     "eslint": "^7.32.0",
     "eslint-config-prettier": "^8.3.0",
-    "eslint-config-xo": "^0.37.0",
-    "eslint-config-xo-typescript": "^0.43.0",
+    "eslint-config-xo": "^0.38.0",
+    "eslint-config-xo-typescript": "^0.44.0",
     "eslint-plugin-prettier": "^3.4.0",
     "eslint-plugin-simple-import-sort": "^7.0.0",
     "prettier": "^2.3.2"
