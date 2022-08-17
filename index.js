@@ -23,6 +23,7 @@ module.exports = {
     '@typescript-eslint/ban-ts-comment': 'off',
     '@typescript-eslint/naming-convention': 'off',
     'capitalized-comments': 'off',
+    'no-warning-comments': 'off',
     /**
      * Better import sorting
      */
