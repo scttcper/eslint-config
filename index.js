@@ -26,6 +26,7 @@ module.exports = {
     '@typescript-eslint/consistent-type-imports': 'off',
     'capitalized-comments': 'off',
     'no-warning-comments': 'off',
+    complexity: 'off',
     /**
      * Better import sorting
      */
