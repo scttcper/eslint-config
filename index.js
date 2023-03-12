@@ -24,6 +24,7 @@ module.exports = {
     '@typescript-eslint/naming-convention': 'off',
     '@typescript-eslint/consistent-type-definitions': 'off',
     '@typescript-eslint/consistent-type-imports': 'off',
+
     /** Requires strictNullChecks kinda annoying */
     '@typescript-eslint/prefer-nullish-coalescing': 'off',
     'capitalized-comments': 'off',
